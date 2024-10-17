@@ -1,46 +1,62 @@
-import { HomeOutlined, InfoCircleOutlined } from "@ant-design/icons"; // Import necessary icons
+import { HomeOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import Sider from "antd/es/layout/Sider.js";
-import {Link} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function SideMenu() {
+    const location = useLocation();
+
     const items = [
         {
-            key: '1',
+            key: '/welcome',
             icon: <HomeOutlined />,
             label: <Link to="/welcome">Home</Link>,
         },
         {
-            key: '2',
+            key: '/aboutTheBarber',
             icon: <InfoCircleOutlined />,
             label: <Link to="/aboutTheBarber">About the barber</Link>,
-        }
+        },
     ];
+
+    const [current, setCurrent] = useState(location.pathname);
+
+    useEffect(() => {
+        setCurrent(location.pathname);
+    }, [location.pathname]);
+
+    const onClick = (e) => {
+        setCurrent(e.key);
+    };
 
     return (
         <div id="sider">
             <Sider
                 className="sider-menu"
                 style={{
-                    background: "linear-gradient(180deg, #14579C 0%, #071E36 100%)",
-                    color: 'white',
-                    height: '100vh'
+                    background: "linear-gradient(120deg, #ffffff 50%, #030712 85%)",
+                    color: "white",
+                    height: "100vh",
                 }}
             >
-                <div style={{ textAlign: 'center', padding: '16px 0' }}>
-                    <img src="https://img.freepik.com/free-vector/barber-tools-vector-illustration-scissors-shaving-razor-pole-ribbon-with-text-sample_74855-10555.jpg?ga=GA1.1.1128757937.1724402617&semt=ais_hybrid" alt="Logo" className="w-[35px] h-[35px]" />
+                {/* Logo Section */}
+                <div style={{ textAlign: "center", padding: "16px 0" }}>
+                    <img
+                        src="src/assets/incercare logo Stefan fara background.png"
+                        alt="Logo"
+                        className="w-[35px] h-[35px]"
+                    />
                 </div>
 
+                {/* Menu Section */}
                 <Menu
-                    theme="dark"
+                    className="menu"
+                    defaultSelectedKeys={["1"]}
+                    selectedKeys={[current]}
                     mode="inline"
-                    defaultSelectedKeys={['1']}
                     items={items}
-
-                    style={{
-                        background: 'transparent',
-                        color: 'white',
-                    }}
+                    onClick={onClick}
                 />
             </Sider>
         </div>

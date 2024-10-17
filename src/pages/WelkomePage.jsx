@@ -13,7 +13,6 @@ export default function WelcomePage() {
 
     return (
         <PageLayout
-            sidebar={SideMenu}
             content={Content}
         />
     );

@@ -3,3 +3,17 @@
 @tailwind utilities;
 
 
+.sider-menu .ant-menu-item {
+    background-color: transparent;
+    color: #09090b;
+}
+
+.menu {
+    background-color: transparent;
+    color: black;
+}
+
+.sider-menu .ant-menu-item-selected {
+    background-color: #e4e4e7;
+    color: #09090b;
+}

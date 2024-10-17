@@ -1,5 +1,4 @@
 import PageLayout from "../components/PageLayout.jsx";
-import SideMenu from "../components/SideMenu.jsx";
 import { Card } from "antd";
 
 export default function AboutTheBarber() {
@@ -20,7 +19,6 @@ export default function AboutTheBarber() {
 
     return (
         <PageLayout
-            sidebar={SideMenu}
             content={Content}
         />
     );
